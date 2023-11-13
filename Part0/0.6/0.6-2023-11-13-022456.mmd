@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant user
+    participant browser
+    participant browserSpa
+    participant server
+    user-->>browser:PUT new_note
+    user-->>browser: ENTER
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note (json)
+    browser-->>browserSpa: "GET .js"
+    activate server
+    server->>server: code 201 created
+    activate server
+    browserSpa-->>browser: execute the js code (note.push(note))
+    activate browser
+    browserSpa->>browser: render the page with the new note (DOM-API)
+    activate browser
+
+
+
+
+
+    Note right of browser: The browser executes the callback function that renders the notes

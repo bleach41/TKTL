@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant user
+    participant browser
+    participant server
+    user-->>browser:PUT new_note
+    user-->>browser: ENTER
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: code 302: redirection  https://studies.cs.helsinki.fi/exampleapp/note
+    deactivate server
+    browser->>server: GET  https://studies.cs.helsinki.fi/exampleapp/note
+    activate browser
+    browser-->>server: GET  https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate browser
+    browser-->>server: GET  https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate browser
+    browser-->>server: GET  https://studies.cs.helsinki.fi/exampleapp/data.js
+    activate browser
+    server->>browser: all in HTML(update)
+    browser->>user: 👀
+
+
+
+
+    Note right of browser: The browser executes the callback function that renders the notes
