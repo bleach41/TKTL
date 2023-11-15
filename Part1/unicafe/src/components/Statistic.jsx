@@ -1,4 +1,5 @@
 import React from 'react'
+import StatisticLine from './StatisticLine'
 
 function Statistic({ good, neutral, bad }) {
     if (good === 0 & neutral === 0 & bad === 0) {
@@ -17,12 +18,14 @@ function Statistic({ good, neutral, bad }) {
 
     return (
         <>
-            <h2>good: {good}</h2>
-            <h2>neutral: {neutral}</h2>
-            <h2>bad: {bad}</h2>
-            <h2>all: {all}</h2>
-            <h2>average: {average}</h2>
-            <h2>positive:{positive}%</h2>
+            <table>
+                <StatisticLine text='good' value={good} />
+                <StatisticLine text='neutral' value={neutral} />
+                <StatisticLine text='bad' value={bad} />
+                <StatisticLine text='all' value={all} />
+                <StatisticLine text='average' value={average} />
+                <StatisticLine text='positive' value={positive} text2='%' />
+            </table>
         </>
     )
 }
